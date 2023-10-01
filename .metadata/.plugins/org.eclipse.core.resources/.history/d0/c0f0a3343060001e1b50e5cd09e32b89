@@ -182,13 +182,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT (& htim2 ) ;
   /* USER CODE END 2 */
-  	  HAL_GPIO_TogglePin(SEG0_GPIO_Port, SEG0_Pin);
-      HAL_GPIO_TogglePin(SEG1_GPIO_Port, SEG1_Pin);
-      HAL_GPIO_TogglePin(SEG2_GPIO_Port, SEG2_Pin);
-      HAL_GPIO_TogglePin(SEG3_GPIO_Port, SEG3_Pin);
-      HAL_GPIO_TogglePin(SEG4_GPIO_Port, SEG4_Pin);
-      HAL_GPIO_TogglePin(SEG5_GPIO_Port, SEG5_Pin);
-      HAL_GPIO_TogglePin(SEG6_GPIO_Port, SEG6_Pin);
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -323,11 +317,9 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 int counter = 50;
-int counter1 = 100;
 int status=0;
 void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim ){
 	counter --;
-	counter1--;
 	if( counter <= 0) {
 		counter = 50;
 		HAL_GPIO_TogglePin ( LED_RED_GPIO_Port , LED_RED_Pin ) ;
@@ -335,42 +327,18 @@ void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim ){
 			case 0:
 				HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
 				HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
-				HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-				HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
 				display7SEG(1);
 				status=1;
 				break;
 			case 1:
 				HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 				HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, RESET);
-				HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-				HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
 				display7SEG(2);
-				status=2;
-				break;
-			case 2:
-				HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
-				HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
-				HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, RESET);
-				HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, SET);
-				display7SEG(3);
-				status=3;
-				break;
-			case 3:
-				HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
-				HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
-				HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
-				HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, RESET);
-				display7SEG(0);
 				status=0;
 				break;
 	}
 
 	}
-		if(counter1 == 0){
-			counter1 = 100;
-			HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-		}
 }
 /* USER CODE END 4 */
 
