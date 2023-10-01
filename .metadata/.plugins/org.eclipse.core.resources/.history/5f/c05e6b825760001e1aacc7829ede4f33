@@ -199,7 +199,6 @@ int main(void)
   HAL_GPIO_TogglePin(SEG6_GPIO_Port, SEG6_Pin);
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer0 (10) ;
   while (1)
   {
     /* USER CODE END WHILE */

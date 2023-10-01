@@ -199,12 +199,11 @@ int main(void)
   HAL_GPIO_TogglePin(SEG6_GPIO_Port, SEG6_Pin);
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer0 (10) ;
   while (1)
   {
     /* USER CODE END WHILE */
 	  if(timer0_flag == 1) {
-	  	 		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+	  	 		  HAL_GPIO_TogglePin(LED_RED_GPIO_PortPORT, LED_RED_Pin);
 	  	 		  setTimer0(2000);
 	  	 	  }
     /* USER CODE BEGIN 3 */
@@ -334,23 +333,9 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-int counter = 100;
-int counter1 = 100;
+
 void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim ){
 	timer_run();
-	counter --;
-		counter1--;
-		if( counter <= 0) {
-			counter = 100;
-			HAL_GPIO_TogglePin ( LED_RED_GPIO_Port , LED_RED_Pin ) ;
-			update7SEG(index_led++);
-			if(index_led == MAX_LED) index_led = 0;
-
-		}
-			if(counter1 == 0){
-				counter1 = 100;
-				HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-			}
 }
 void update7SEG(int index) {
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
