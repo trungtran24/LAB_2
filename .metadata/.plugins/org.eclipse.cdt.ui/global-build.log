@@ -1,19 +1,30 @@
-17:46:50 **** Incremental Build of configuration Debug for project GIT_LAB_2 ****
+19:18:23 **** Incremental Build of configuration Debug for project GIT_LAB_2 ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:213:4: warning: implicit declaration of function 'updateClockBuffer' [-Wimplicit-function-declaration]
+  213 |    updateClockBuffer();
+      |    ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:397:6: warning: conflicting types for 'updateClockBuffer'
+  397 | void updateClockBuffer() {
+      |      ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:213:4: note: previous implicit declaration of 'updateClockBuffer' was here
+  213 |    updateClockBuffer();
+      |    ^~~~~~~~~~~~~~~~~
 arm-none-eabi-gcc -o "GIT_LAB_2.elf" @"objects.list"   -mcpu=cortex-m3 -T"E:\LAB2\GIT_LAB_2\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="GIT_LAB_2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: GIT_LAB_2.elf
  
 arm-none-eabi-size   GIT_LAB_2.elf 
 arm-none-eabi-objdump -h -S  GIT_LAB_2.elf  > "GIT_LAB_2.list"
 arm-none-eabi-objcopy  -O ihex  GIT_LAB_2.elf  "GIT_LAB_2.hex"
-   text	   data	    bss	    dec	    hex	filename
-   8180	     44	   1644	   9868	   268c	GIT_LAB_2.elf
 arm-none-eabi-objcopy  -O binary  GIT_LAB_2.elf  "GIT_LAB_2.bin"
+   text	   data	    bss	    dec	    hex	filename
+   8476	     40	   1664	  10180	   27c4	GIT_LAB_2.elf
 Finished building: default.size.stdout
  
-Finished building: GIT_LAB_2.hex
 Finished building: GIT_LAB_2.bin
+Finished building: GIT_LAB_2.hex
 Finished building: GIT_LAB_2.list
  
  
